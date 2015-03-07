@@ -1,26 +1,23 @@
  class Virus
- 	@@virus_num = 1
- 	def virus(x)
- 		virus_tmp = x-3
- 		#当天数小于４的情况
- 		if(virus_tmp<=0)
- 			return  1  +  x
- 		#当天数大于４的情况
- 		else
- 			#计算子病毒的分裂情况时会包含自身，所以这里初始值为最后的三天所分裂的子病毒加上母体
- 			virus_num = 4
-   			while (virus_tmp>0) 
-   				
-   				virus_children = virus(virus_tmp)
-     				virus_num += virus_children
-   			 	virus_tmp -=1
-   			 	
-			end
-			return virus_num
-		end
-	end
+ 	@@virus_num = 0
+       def virusAll(n)
+              if (n <= 3)
+                  @@virus_num = n + 1 
+              else
+                  @@virus_num = virusAdd(n) + 2*virusAdd(n-1)+virusAdd(n-2)+virusAdd(n-3)
+                  #@@virus_num =  3*virusAdd(n-1)+virusAdd(n-2)+2*virusAdd(n-3)
+              end
+       end
+ 	private
+      def  virusAdd(n)
+            if(n < 4)
+                return 1
+            else
+              return virusAdd(n -1)+virusAdd(n - 3)
+            end
+       end 
 end
 
 virus = Virus.new
 
-puts virus.virus(6)
+puts virus.virusAll(17)

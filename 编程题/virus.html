@@ -10,18 +10,23 @@
 <p>我的第一个段落。</p>
 
 <script>
-var day = 100;
-function virus(n){
-    var virus_num = 1;
-    if(n < 4)
-      { virus_num = 1 + virus_num };
-    else
-      { for(var i = 1; i <= (n-4); i++)
-          { virus_num = 4 + virus(i); }        
-      }
+function virusAdd(n){
+        if( n < 4){
+          return 1;
+        }else{
+          return  virusAdd(n -1)+virusAdd(n - 3);
+        }
 }
 
-document.write(9);
+function virusAll(n){
+  if (n <= 3)
+              return virus_num = n + 1; 
+              else{
+                return virusAdd(n) + 2*virusAdd(n-1)+virusAdd(n-2)+virusAdd(n-3);
+              }
+}
+
+document.write(virusAll(9));
 </script>
 </body>
 </html> 

@@ -1,17 +1,15 @@
-function virus(n){
-    var virus_num = 1,virus_tmp = n - 3;
-    if(virus_tmp <=0 )
-      { 
-      	return n + virus_num ;
-      }
-    else
-      {  
-      	virus_num = 4;
-      	while(virus_tmp > 0)
-      	{
-      		virus_num += virus(virus_tmp);
-      		virus_tmp -=1;
-      	};
-      	return virus_num;
-      };
+function virusAdd(n){
+        if( n < 4){
+          return 1;
+        }else{
+          return  virusAdd(n -1)+virusAdd(n - 3);
+        }
+}
+
+function virusAll(n){
+  if (n <= 3)
+              return virus_num = n + 1; 
+              else{
+                return virusAdd(n) + 2*virusAdd(n-1)+virusAdd(n-2)+virusAdd(n-3);
+              }
 }
