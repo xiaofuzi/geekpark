@@ -1,15 +1,15 @@
 ;(function($){
 	$.fn.extend({
-		"modalshow":function(target){
+		"modalShow":function(target){
 			$("#"+target).css("display","block");
 			$("#"+target).addClass("in");
 			$("body").addClass("modal-open");
-			$("body").css("background-color","#B0AAAA");
-			
+			$("#geekModal").prepend("<div id='back-drop' class='modal-backdrop  in'></div>")
 		},
-		"modalhide":function(target){
+		"modalHide":function(target){
 			$("#"+target).css("display","none");
-			$("body").css("background-color","white");
+			
+			$("#back-drop").remove();
 		}
 	})
 	
